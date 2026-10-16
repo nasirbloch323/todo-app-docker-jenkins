@@ -62,22 +62,19 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            when {
-                branch 'main'
-            }
-            steps {
-                sh '''
-                    rsync -a --delete --exclude .venv --exclude .git --exclude reports ./ $DEPLOY_DIR/
-                    python3 -m venv $DEPLOY_DIR/.venv
-                    $DEPLOY_DIR/.venv/bin/pip install -r $DEPLOY_DIR/requirements.txt
-                    sudo systemctl restart tarteeb
-                    sleep 3
-                    curl --fail http://127.0.0.1:5000/health
-                '''
-            }
-        }
+         stage('Deploy') {
+          steps {
+          sh '''
+            rsync -a --delete --exclude .venv --exclude .git --exclude reports ./ $DEPLOY_DIR/
+            python3 -m venv $DEPLOY_DIR/.venv
+            $DEPLOY_DIR/.venv/bin/pip install -r $DEPLOY_DIR/requirements.txt
+            sudo systemctl restart tarteeb
+            sleep 3
+            curl --fail http://127.0.0.1:5000/health
+        '''
     }
+}        
+    
 
     post {
         success { echo 'Build passed and site deployed on port 5000.' }
