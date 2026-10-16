@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Services{% endblock %}
+{% block content %}
+<section class="section page-head">
+  <div class="wrap">
+    <h1>Services</h1>
+    <p class="lead">From first prototype to automated releases, everything a web product needs.</p>
+  </div>
+</section>
+<section class="section tight">
+  <div class="wrap">
+    {% for s in services %}
+    <article class="svc-row" id="{{ s.slug }}">
+      <h2>{{ s.title }}</h2>
+      <div>
+        <p>{{ s.text }}</p>
+        <ul class="ticks">{% for p in s.points %}<li>{{ p }}</li>{% endfor %}</ul>
+      </div>
+    </article>
+    {% endfor %}
+    <div class="cta left">
+      <a class="btn" href="{{ url_for('contact') }}">Talk to us</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

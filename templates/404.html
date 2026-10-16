@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Page not found{% endblock %}
+{% block content %}
+<section class="section page-head">
+  <div class="wrap">
+    <h1>Page not found</h1>
+    <p class="lead">The address may be mistyped or the page has moved.</p>
+    <a class="btn" href="{{ url_for('home') }}">Go to the home page</a>
+  </div>
+</section>
+{% endblock %}

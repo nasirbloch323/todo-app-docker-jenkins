@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+{% block content %}
+<section class="section page-head">
+  <div class="wrap">
+    <h1>Start a project</h1>
+    <p class="lead">Describe what you need and we will reply by email within one working day.</p>
+  </div>
+</section>
+<section class="section tight">
+  <div class="wrap form-wrap">
+    <form method="post" id="contact-form" novalidate>
+      <label for="name">Your name</label>
+      <input id="name" name="name" type="text" autocomplete="name" value="{{ form.get('name','') }}" required>
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email" value="{{ form.get('email','') }}" required>
+
+      <label for="message">What do you need?</label>
+      <textarea id="message" name="message" rows="6" required>{{ form.get('message','') }}</textarea>
+
+      <button class="btn" type="submit">Send message</button>
+    </form>
+    <aside class="side">
+      <h3>Prefer email?</h3>
+      <p><a href="mailto:hello@tarteeb.example">hello@tarteeb.example</a></p>
+      <h3>Hours</h3>
+      <p>Monday to Friday, 9:00 to 18:00</p>
+    </aside>
+  </div>
+</section>
+{% endblock %}

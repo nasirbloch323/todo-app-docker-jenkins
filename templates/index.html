@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Web apps that ship with confidence{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Web apps that pass every check before they go live.</h1>
+      <p class="lead">Tarteeb designs, builds and tests web applications, then automates the release so each update is quick and safe.</p>
+      <div class="actions">
+        <a class="btn" href="{{ url_for('contact') }}">Start a project</a>
+        <a class="btn btn-ghost" href="{{ url_for('services') }}">See what we do</a>
+      </div>
+    </div>
+
+    <div class="pipeline" id="pipeline" aria-label="Example build pipeline">
+      <div class="pipe-head"><span>build #128</span><span class="pipe-status" id="pipe-status">running</span></div>
+      <ol>
+        <li class="stage"><span class="dot"></span><div><strong>Checkout</strong><small>main, 3 files changed</small></div><em>2s</em></li>
+        <li class="stage"><span class="dot"></span><div><strong>Install</strong><small>dependencies cached</small></div><em>9s</em></li>
+        <li class="stage"><span class="dot"></span><div><strong>Test</strong><small>42 passed, 0 failed</small></div><em>14s</em></li>
+        <li class="stage"><span class="dot"></span><div><strong>Deploy</strong><small>production, zero downtime</small></div><em>6s</em></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>What we build</h2>
+    <div class="svc-list">
+      {% for s in services %}
+      <a class="svc" href="{{ url_for('services') }}#{{ s.slug }}">
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.text }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap">
+    <h2>How a project runs</h2>
+    <ol class="steps">
+      {% for t, d in steps %}
+      <li><h3>{{ t }}</h3><p>{{ d }}</p></li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap cta">
+    <h2>Have something to build?</h2>
+    <p class="lead">Tell us what you need. We reply within one working day.</p>
+    <a class="btn" href="{{ url_for('contact') }}">Start a project</a>
+  </div>
+</section>
+{% endblock %}
