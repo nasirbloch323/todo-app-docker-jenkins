@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sehat Connect | District Health Department</title>
+  <meta name="description" content="Book appointments, read health notices and find department hours at Sehat Connect.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E7C86'/%3E%3Crect x='13' y='6' width='6' height='20' rx='1.5' fill='white'/%3E%3Crect x='6' y='13' width='20' height='6' rx='1.5' fill='white'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="util">
+    <div class="wrap util-inner">
+      <span>Emergency helpline <strong>1122</strong></span>
+      <ul class="chips" aria-label="Portal status">
+        <li data-tier="frontend"><span class="dot"></span>Web</li>
+        <li data-tier="backend"><span class="dot"></span>API</li>
+        <li data-tier="database"><span class="dot"></span>Database</li>
+      </ul>
+    </div>
+  </div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top"><span class="mark"></span>Sehat Connect<small>District Health Department</small></a>
+      <button class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="links">Menu</button>
+      <nav id="links" class="links">
+        <a href="#notices">Notices</a>
+        <a href="#departments">Departments</a>
+        <a href="#appointments">Appointments</a>
+        <a class="btn btn-small" href="#appointments">Book now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Public health services</p>
+          <h1>Care for every community, closer to home.</h1>
+          <p class="lead">Book a clinic visit, check your appointment and stay informed about health advisories in your district.</p>
+          <div class="actions">
+            <a class="btn" href="#appointments">Book an appointment</a>
+            <a class="btn btn-ghost" href="#notices">Health notices</a>
+          </div>
+          <p class="hero-stats"><strong id="stat-dept">-</strong> departments &middot; <strong id="stat-appt">-</strong> appointments booked</p>
+        </div>
+        <div class="quick">
+          <a href="#appointments"><span class="q-ico">+</span><strong>Book appointment</strong><small>Pick a department and date</small></a>
+          <a href="#check"><span class="q-ico">&#10003;</span><strong>Check status</strong><small>Use your reference number</small></a>
+          <a href="#notices"><span class="q-ico">!</span><strong>Health notices</strong><small>Alerts and advisories</small></a>
+          <a href="#departments"><span class="q-ico">&#9679;</span><strong>OPD timings</strong><small>Hours for every department</small></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="notices">
+      <div class="wrap">
+        <h2>Health notices</h2>
+        <div class="notice-list" id="notice-list"><p class="muted">Loading notices...</p></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="departments">
+      <div class="wrap">
+        <h2>Departments</h2>
+        <div class="dept-list" id="dept-list"><p class="muted">Loading departments...</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="appointments">
+      <div class="wrap form-wrap">
+        <div>
+          <h2>Book an appointment</h2>
+          <form id="book-form" novalidate>
+            <label for="name">Patient name</label>
+            <input id="name" name="name" type="text" autocomplete="name" maxlength="100" required>
+            <p class="field-error" data-for="name"></p>
+
+            <label for="phone">Phone number</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30" placeholder="0300 1234567" required>
+            <p class="field-error" data-for="phone"></p>
+
+            <label for="department">Department</label>
+            <select id="department" name="department" required><option value="">Loading...</option></select>
+            <p class="field-error" data-for="department"></p>
+
+            <label for="date">Preferred date</label>
+            <input id="date" name="date" type="date" required>
+            <p class="field-error" data-for="date"></p>
+
+            <label for="note">Reason for visit <span class="muted">(optional)</span></label>
+            <textarea id="note" name="note" rows="3" maxlength="500"></textarea>
+            <p class="field-error" data-for="note"></p>
+
+            <button class="btn" type="submit" id="book-btn">Confirm booking</button>
+            <p class="form-msg" id="book-msg" role="status"></p>
+          </form>
+        </div>
+
+        <aside class="side" id="check">
+          <h3>Check your appointment</h3>
+          <form id="check-form" novalidate>
+            <label for="ref">Reference number</label>
+            <input id="ref" name="ref" type="text" placeholder="SH-000123" maxlength="20" required>
+            <label for="cphone">Phone number used for booking</label>
+            <input id="cphone" name="cphone" type="tel" maxlength="30" required>
+            <button class="btn btn-ghost" type="submit" id="check-btn">Check status</button>
+            <p class="form-msg" id="check-msg" role="status"></p>
+          </form>
+          <p class="muted small">This portal is a demonstration. In an emergency, call 1122 or go to the nearest emergency department.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a class="brand" href="#top"><span class="mark"></span>Sehat Connect</a>
+      <p class="muted">&copy; 2026 District Health Department &middot; Build <span id="version">-</span></p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
